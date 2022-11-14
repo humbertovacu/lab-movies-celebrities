@@ -35,6 +35,18 @@ router.post('/:id/delete', (req, res) => {
     .catch(err => res.send(err))
 })
 
+router.get('/:id/edit', (req, res) => {
+    const { id } = req.params;
+    const findMovie = Movie.findById(id);
+    const findCast = Celebrity.find();
+
+    Promise.all([findMovie, findCast])
+    .then(movieInfo => res.render('movies/edit-movie.hbs', {movie: movieInfo}))
+    .catch(err => res.send(err))
+
+    
+})
+
 
 
 module.exports = router;
