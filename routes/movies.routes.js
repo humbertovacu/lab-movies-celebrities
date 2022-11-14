@@ -28,4 +28,13 @@ router.get('/:id', (req,res) =>{
     .catch(err => res.send(err))
 })
 
+router.post('/:id/delete', (req, res) => {
+    const { id } = req.body;
+    Movie.deleteOne(id)
+    .then(deletedFilm => res.redirect('/movies'))
+    .catch(err => res.send(err))
+})
+
+
+
 module.exports = router;
