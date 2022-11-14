@@ -15,7 +15,9 @@ router.post('/create',(req,res)=>{
 })
 
 router.get('/', (req,res)=>{
-    res.render('movies/movies.hbs')
+    Movie.find()
+    .then (allMovies => res.render('movies/movies.hbs', {movies: allMovies}))
+    .catch(err => res.send(err))
 })
 
 module.exports = router;
