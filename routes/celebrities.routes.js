@@ -15,4 +15,11 @@ router.post('/create', (req, res)=> {
 }
 )
 
+router.get('/', (req, res)=>{
+    Celebrity.find()
+    .then(allCelebrities => res.render('celebrities/celebrities.hbs', {celebrities: allCelebrities}))
+    .catch(err => res.send(err));
+}
+)
+
 module.exports = router;
