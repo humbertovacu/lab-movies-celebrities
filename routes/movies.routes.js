@@ -20,4 +20,12 @@ router.get('/', (req,res)=>{
     .catch(err => res.send(err))
 })
 
+router.get('/:id', (req,res) =>{
+    const { id } = req.params;
+    Movie.findById(id)
+    .populate('cast')
+    .then(selectedMovie => res.render('movies/movie-details.hbs', {movie: selectedMovie}))
+    .catch(err => res.send(err))
+})
+
 module.exports = router;
