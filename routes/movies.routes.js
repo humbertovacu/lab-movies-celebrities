@@ -43,9 +43,16 @@ router.get('/:id/edit', (req, res) => {
     Promise.all([findMovie, findCast])
     .then(movieInfo => res.render('movies/edit-movie.hbs', {movie: movieInfo}))
     .catch(err => res.send(err))
-
-    
 })
+
+router.post('/:id', (req, res)=>{
+    const { id } = req.params;
+    const { title, genre, plot, cast } = req.body;
+    Movie.findByIdAndUpdate(id, {title, genre, plot, cast}, {new: true})
+    .then(updatedMovie => res.redirect(`/movies/${id}`))
+    .catch(err => res.send(err));
+}
+)
 
 
 
