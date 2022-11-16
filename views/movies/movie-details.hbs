@@ -4,7 +4,7 @@
     <h3>{{genre}}</h3>
     <h3>Plot:</h3>
     <p>{{plot}}</p>
-    <h3>Cast:</h3>
+    <h3>Cast and Crew:</h3>
     {{#each cast}}
         <h3>{{name}}</h3>
         <p>Occupation: {{occupation}}</p>
@@ -18,3 +18,5 @@
 
 <a href="/movies/{{_id}}/edit">Edit this movie</a>
 {{/with}}
+
+<a href="/movies">Back to Movie List</a>
