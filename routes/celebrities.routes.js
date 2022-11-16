@@ -36,4 +36,19 @@ router.post('/:id/delete', (req, res) => {
     .catch(err => res.send(err))
 })
 
+router.get('/:id/edit', (req, res) => {
+    const { id } = req.params;
+    Celebrity.findById(id)
+    .then(foundCelebrity => res.render('celebrities/celebrity-edit.hbs',{celebrity: foundCelebrity}))
+    .catch (err => res.send(err));
+})
+
+router.post('/:id', (req, res)=> {
+    const { id } = req.params;
+    const { name, occupation, catchPhrase } = req.body;
+    Celebrity.findByIdAndUpdate(id, {name, occupation, catchPhrase}, {new: true})
+    .then (editedCelebrity => res.redirect(`/celebrities/${id}`))
+    .catch (err => res.send(err));
+})
+
 module.exports = router;

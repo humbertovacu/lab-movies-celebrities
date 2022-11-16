@@ -1,0 +1,16 @@
+<h2>Celebrity Edit</h2>
+
+<form action="/celebrities/{{celebrity._id}}", method="post">
+    <label for="celebrity-name-edit"> Name: 
+        <input id="celebrity-name-edit" type="text" name="name" value="{{celebrity.name}}">
+    </label>
+    <label for="occupation-edit">Occupation: 
+        <input id="ocuppation-edit" type="text" name="occupation" value="{{celebrity.occupation}}">
+    </label>
+    <label for="cath-phrase-edit"> Plot:
+        <textarea id="catch-phrase-edit" name="catchPhrase"  cols="30" rows="10">{{celebrity.catchPhrase}}</textarea>
+    </label>
+    <button type="submit">Submit</button>
+</form>
+
+<a href="/celebrities">Cancel</a>
